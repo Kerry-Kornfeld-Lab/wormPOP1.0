@@ -1,0 +1,60 @@
+{I Feeding parameters based on 5ml vial of worms}
+Time between feedings=8 {16 means 2 days; the special entry 7223 means a 7-day cycle of MWF feeding; 1624 means random schedule with min 16 and max 24 pds. Substitute any 2-digit numbers for 16 and 24.  -1 means read a file 'FEEDSCHED.INP' for explicit feeding schedule
+Amount of food added=10000000 {each feeding; in units of nanograms total food.  500000ng = 0.5mg of bacteria = 0.1mg/ml;  Negative input means food is held constant (at minus the input amount)}
+Degradation time for food=0  {no food degradation over relevant time scales}
+Food triage=0  {continuous between 0 and 1. 0 means equal food distrib (weighted by lean mass).  1 means larvae get more access to food when they are close to maturity.  This helps keep larvae from starving all at once and stabilizes population.}
+
+{II Culling parameters}
+Time between cullings=8 {16 means 2 days; the special entry 7223 means a 7-day cycle of MWF feeding; 1624 means random schedule
+Overall culling proportion (predation)=0.1  {this number affects all stages and is always active; individual culling is in the next 6 numbers}
+Food culling proportion (predation)=0.0  {these individual cullings are MULTIPLIED on top of the unified culling proportion}
+Egg culling proportion (predation)=0.0  {for example if overall culling is 0.2 and egg culling is 0.3 then eggs are reduced by (1-0.2)*(1-0.3)=0.56}
+Larva culling proportion (predation)=0.0  {no comment}
+Dauer culling proportion (predation)=0.0  {no comment}
+Adult culling proportion (predation)=0.0  {no comment}
+Bag culling proportion (predation)=0.0  {no comment}
+
+{III Initialization}
+Initial number of eggs=0  {self-explanatory}
+Initial number of dauers=0 {self-explanatory}
+Initial number of larvae=250  {self-explanatory}
+
+{IV Individual parameters}
+
+{A egg parameters}
+Mass of one egg=65 {in ng - Every egg hatches after 4 time steps}
+
+{B larva parameters}
+Mass of newly hatched larva=65  {Empirically, new worms seem larger than the eggs they came from. In the model, the fiction is that they eat the difference immediately on hatching}
+Min age at maturity=20 {Larvae cannot mature before this age, no matter what their mass}
+Time target for larva maturity=28 {Larvae starve if they haven't reached min adult mass by this age }
+Cost of Living=0.035  {2% of lean mass is energy cost of metabolism for 3 hrs
+Metabolic efficiency=0.85 {for adults and larvae. The remaining energy (1-efficiency) is lost in the process of anabolism or making eggs. 2019May, 2 efficiency inputs were folded together.}
+Larva probability to cheat starvation=0.5  {If a larva runs out of energy it may still survive...}
+Individual variation in pumping and adult size=1.0  {If the option is $defined for individual growth}
+
+{C Dauer parameters}
+Dauer food threshold=250000  {dauering rate goes down with food concentration; this constant scales the food concentration at which dauering probaility diminishes}
+Inverse dauering rate=2 {at zero food this number of periods is required for the average larva to dauer}
+Probability of dauer awakening=0.0324E-3 {This scales the probability (for each time step) of dauers awakening which is proportional to sqrt(total food)}
+Dauer attrition=800 {On this time scale dauers die}
+
+{D adult parameters}
+Min lean mass at maturity=800 {ng} {there's an expiry date, see "time target for larva maturity".  If this mass isn't achieved by this time step, larva starves
+Max lean mass at maturity=3200 {ng} {used in fertility calculation
+Proportion const for min mass of stressed adults=1.0 {If adults mature large and are then exposed to low food, they can turn their stored mass into eggs, reducing mass down to a minimum.  This minimum is a weighted average of the mass on attaining maturity and the min lean mass at maturity.  The higher this constant is, the more eggs the stressed adult can lay, turning its lean mass into eggs.     
+Adult life span=160 {time scale to Gompertz death from old age.  240 means that about half the worms are dead after 120 t-steps = 15 days}
+Shape of survival curve=3 {higher numbers mean a square curve with deaths all clustered around the life span; lower numbers mean deaths more spread out}
+Const for total food in death prob=0.0 {Gompertz life span is adjusted downward with increased lifetime food consumption. Changed to zero after Andreas measurements of 2014Aug}
+Fertility span=1 {If this quantity =1 then time scale of fertility is according to Andrea's measurements.  2 means that the curve keeps its shape but is stretched out twice as long etc.}
+
+{E Bag parameters}
+Time from bagging to bursting=10  {no comment}
+Min food required to avoid bagging=2500 {averaged over two time periods}
+
+{V Output}
+Output file name='popdyn.csv'  {will be modified by appending numbers if there are multiple files}
+Synchronized=False  {This is for testing individual behaviors.  All eggs hatch together at start; no egg ever hatches after that and no larva ever becomes an adult after 30 time steps.
+Stop after how many time steps=800 {no comment}
+Individual worm life history sample= 100 A  {Number is the count of worms requested for detailed output; A=all; M=mature; F=Fertile; O=died of old age E="Every" or "Early"
+Repeat header every n time steps; n=0  {0 means there is no repeated header}
