@@ -16,7 +16,7 @@ System Requirements
 	Output is in the form of CSV files.
 
 Installation guide
-	Download WormNRG.inp, WormEnergy.exe, or/and WormEnergy-Ind-Output.exe, on a PC with Windows vx 7+ in the same folder. Installation time should be under a minute. The difference between the two versions is that the “Ind-Output” version optionally generates individual data files tracking the life histories of a specified number of individual worms, while the version without “Ind-Output” runs quicker and has a higher maximum capacity for worm population before memory overflow. 
+	Download WormNRG.inp, WormEnergy.exe, on a PC with Windows vx 7+ in the same folder. Installation time should be under a minute. 
 
 Instructions to use
 	Specify the input parameter in Worm.NRG, save, and start WormEnergy.exe. The duration of the program is dependent on the chosen number of time steps- usually a few minutes. The outputting CSV files are saved in the same folder. For a new simulation, the existing files need to be removed or the program run in a new folder. 
