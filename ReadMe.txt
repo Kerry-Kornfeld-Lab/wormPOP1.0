@@ -3,14 +3,15 @@ wormPOP
 
 This package includes the following files:
 WormEnergy.dpr -- the main Delphi project file with almost all the Pascal code
-WormEnergy.exe – Compiled, executable file for WIndows
+WormEnergy.exe – Compiled, executable file for Windows
+SysUtils.pas -- part of the Delphi7 package.
 DosStuff.pas -- utilities for formatting text input and output
 POISSONU.pas -- Generates random variables with a Poisson distribution
 WormNRG.inp -- a text file in which input parameters are specified
 summary_input_output_files.xlsx – summary and cross reference of inputs used for all figures, key for output files
 
 System Requirements
-	This PASCAL source is written to be compiled by Borland Delphi vx 7 (2002). With trivial modifications, I believe it can be made to run under Lazarus, and with a few more tweaks under Free Pascal.
+	This PASCAL source is written to be compiled by Borland Delphi vx 7 (2002). With trivial modifications, I believe it can be made to run under Lazarus, and with a few more tweaks under Free Pascal. The main file is the DPr file, and it "uses" three PAS files, two of which are creations of Josh Mitteldorf, and the third, SysUtils.pas, is distributed with the Delphi Pascal compiler.
 	It runs under Windows vx 7+ but operates in a DOS window, with only a text interface.
 	Input is in a text file called WormNRG.inp, which is self-documenting.
 	Output is in the form of CSV files.
@@ -28,4 +29,12 @@ Reproduction instructions
 	In order to reproduce the data used in manuscript “A population dynamics tipping point for aging as a cause of adult death”- use the inputs listed in “input_files_all_figures” in the excel file “summary_input_output_files”.
 
 Questions and licensing:
-	This code was written by Josh Mitteldorf, and he will answer your questions if you email him at <aging.advice@gmail.com>. The executable and source code are released for non-commercial usage with attribution to the author, and permission to modify is granted, again for non-commercial uses, with attribution. 
+	This code was written by Josh Mitteldorf, and he will answer your questions if you email him at <aging.advice@gmail.com>. The executable and source code are released for non-commercial usage with attribution to the author. 
+
+MIT Open Source License:
+Copyright (c) 2021 by Josh Mitteldorf
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
