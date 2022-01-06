@@ -9,6 +9,11 @@ DosStuff.pas -- utilities for formatting text input and output
 POISSONU.pas -- Generates random variables with a Poisson distribution
 WormNRG.inp -- a text file in which input parameters are specified
 summary_input_output_files.xlsx – summary and cross reference of inputs used for all figures, key for output files
+Supplemental_Material--information for wormPop1.0 design and use
+Figure 2_lifespan_analysis --R code for Figure 2 M,N,P
+Figure 4_egg_laying_1 -- R code for Figure 4F
+Figure 4_egg_laying_2 -- R code for Figure 4F
+
 
 System Requirements
 	This PASCAL source is written to be compiled by Borland Delphi vx 7 (2002). With trivial modifications, I believe it can be made to run under Lazarus, and with a few more tweaks under Free Pascal. The main file is the DPr file, and it "uses" three PAS files, two of which are creations of Josh Mitteldorf, and the third, SysUtils.pas, is distributed with the Delphi Pascal compiler.
@@ -24,12 +29,14 @@ Instructions to use
 
 Instructions to run on data
 	Use the inputs in the provided example Worm.NRG file and run Worm.Energy.exe. It should take only a few minutes. The output file POPDYN shows the summary of the population at each time step (see output_key_POPDYN in summary_input_outout_files), the output file WRAtes reports all worm rates (wr- see Figure 1G), and the output file IndividualWorms shows the summary of single worms- but is empty and not used at this point. The CVS files POPDYN and WRates can then be processed in R, Excel, or different software.
-
+	
 Reproduction instructions
-	In order to reproduce the data used in manuscript “A population dynamics tipping point for aging as a cause of adult death”- use the inputs listed in “input_files_all_figures” in the excel file “summary_input_output_files”.
+	In order to reproduce the data used in manuscript “A laboratory and simulation platform to integrate individual life history traits and population dynamics”- use the inputs listed in “input_files_all_figures” in the excel file “summary_input_output_files”. Data for Figure 2 M,N,P were analyzed using R code “Figure 2_lifespan_analysis” and data for Figure 4F were analyzed using R code “Figure 4_egg_laying_1” and  “Figure 4_egg_laying_2”.
+Details for using “Figure 2_lifespan_analysis”: Open RStudio (Version 1.4.1717), set working directory, open file “Figure 2_lifespan_analysis”, create a folder graphs in your working directory, save lifespan data according instruction in the code comments under file name “lifespan”, adjust line 92 candidate names to analyze, adjust line 151 according number of groups/treatments, and run code.
+Details for using “Figure 4_egg_laying_1” and “Figure 4_egg_laying_2”: Open RStudio (Version 1.4.1717), open file “Figure 4_egg_laying_1” and “Figure 4_egg_laying_2”, set working directory, change in code your file_location (line 5) “Figure 4_egg_laying_1”, run code, store number of analyzed individuals and total number of eggs in new file for all expriments, save file and add file location to “Figure 4_egg_laying_2” in line 11. Run “Figure 4_egg_laying_2”. 
 
 Questions and licensing:
-	This code was written by Josh Mitteldorf, and he will answer your questions if you email him at <aging.advice@gmail.com>. The executable and source code are released for non-commercial usage with attribution to the author. 
+	This code was written by Josh Mitteldorf with the exception of Rcode, and he will answer your questions if you email him at <aging.advice@gmail.com>. The executable and source code are released for non-commercial usage with attribution to the author.
 
 MIT Open Source License:
 Copyright (c) 2021 by Josh Mitteldorf
@@ -38,3 +45,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
